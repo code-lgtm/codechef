@@ -1,0 +1,3 @@
+1) read system call was used to handle larget input sizes
+2) int data type was used for all variables as maximum size was given 10exp9. As only modulus operator was involved in expression, there was no case where input size might have gone out of bounds. Maximum size of signed int is 1.073741824 * 10exp9
+3) Initially stroken was use to parse the incoming data. That didn't worked out because a number might be cut across two read calls.  

@@ -1,0 +1,33 @@
+Problem:  https://www.codechef.com/problems/RBTREE
+
+1) root is 1 and black initially
+
+2) Sub problems:
+   a) Given a number, how to find it's color given the color of root
+   b) How to find the path between two given nodes
+
+3) Given a number, how to find it's color given the color of root
+   --- Starting with level 0 (just root node), number of nodes at any level x is pow(2, x)
+   --- Colors would alternate between levels : if Level 0 is black, Level 1 would be red, Level 2 would be black and so on
+   --- Hence, color would be similar to root is level is even and different otherwise
+
+4) How to find the path between nodes
+   Sub problems:
+   a) Find level of node
+   --- Number of nodes at any level x is pow(2,x)
+   --- Hence a node lies at a level if its number lies between pow(2,h) <= n < pow(2, h+1)
+   --- Since we know the node number n, h can be found out as h = log(n) (Base is 2)
+
+   b) Traverse path between nodes n1 and n2
+   --- initialize count to zero
+   --- Get height of node 1. Let's say it is h1
+   --- Get height of node 2. Let's say it is h2
+   --- Get max of h1 and h2 and put it in h1
+   --- check color of n1. increment count if color is equal to the required color
+   --- Decrement n1 by 1
+   --- Repeat last 2 steps till n1 and  n2 are equal
+   --- Check if n1 = n2. If no repeat following steps:
+       --- Get color of n1.increment count of color by 2 if equal to the required color 
+       --- Decrement n1 and n2 by 1
+       
+

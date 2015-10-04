@@ -1,0 +1,37 @@
+Problem: https://www.interviewbit.com/courses/programming/topics/linked-lists/problems/addnum/
+
+----------------Problem Statement--------------------------------------------------------------------------------------------------------------------------
+You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. 
+Add the two numbers and return it as a linked list.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+
+    342 + 465 = 807
+Make sure there are no trailing zeros in the output list
+So, 7 -> 0 -> 8 -> 0 is not a valid response even though the value is still 807.
+----------------Problem Statement--------------------------------------------------------------------------------------------------------------------------
+
+Solution Approach:
+
+1) Should not try to conver linked list to numbers as linked list can be very large
+2) Get the length of first linked list A
+3) Get the length of second linked list B
+4) Store mimimum length and head node of shorter linked list in A. Exchange lenghts and pointers to head nodes to A and B if necessary
+5) Initialize carry to zero
+6) Run a loop which will minimum length times
+         -- Add numbers from both linked list at the same level. 
+         -- Put the value = (result+carry) mod 10 in the larger linked list at the corresponding node
+         -- if value >= 10, put carry as 1, 0 otherwise
+         -- Move forward one node with linked list A
+         -- Move forward one node with linked list B
+7) If carry is 1 and we have not reached at the end of B
+         -- Put the value = (value at current node in B+carry) mod 10 in B at the current Node
+         -- if value >= 10, put carry as 1, 0 otherwise
+         -- Move forward one node with linked list B
+ 
+8) If carry is 1 and we have reached at the end of B
+         -- Insert 1 in the end at the end of linked list
+ 
+9) Return linked list B as output
+

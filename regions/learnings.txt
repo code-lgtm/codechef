@@ -1,0 +1,48 @@
+Problem Statement:
+You are given a character matrix with m rows and n columns of cells, each of which contains either 1 or 0. Two cells are said to be connected if they are adjacent to each other horizontally, vertically, or diagonally. The connected and filled (i.e. cells that contain a 1) cells form a region. There may be several regions in the matrix. Find the number of regions, the number of cells in the largest region in the matrix and the number of cells in the second largest region in the matrix (i.e. second largest region should be strictly smaller than the largest region).
+ 
+Output Format:
+Just edit the answer array given to you in the following format:
+answer[0] = Number of regions in the matrix.
+answer[1] = Number of cells in the largest region.
+answer[2] = Number of cells in the second largest region.
+  
+Constraints
+0<m<=100
+0<n<=100
+   
+Sample Input:
+5
+5
+11110
+10000
+00111
+10000
+01111
+    
+Sample Output:
+3
+5
+3
+     
+Explanation
+XXXX0
+X0000
+00111
+Y0000
+0YYYY
+
+The X or Y characters indicate the largest connected components, as per the given definition. There are five cells in both these components, three in the second largest component and the total number of regions is 3.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Solution Approach:
+1) Create a graph initalized with vertexes of the size of matrix
+2) Traverse through the matrix and add Edges from current vertex to 
+   -- self if value is 1
+   -- immediate right vertex if value is 1
+   -- immediate below vertex if value is 1
+   -- diagonal right below if value is 1
+   -- diagonal left below if value is 1
+3) Once the graph is created invoke depth first search for each vertex.
+4) After each invocation of dfs returns back the constructor, size contains the number of the component vertexes and count conatins the current index of the component. Add this to tree map with key as count and value as size
+5) In the end print key and values of the map to get each component and their size

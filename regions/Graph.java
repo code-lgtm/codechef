@@ -26,7 +26,7 @@ public class Graph
         this.adj[w].add(v);
     }
 
-    public Iterable<Integer> adj(int v)
+    public LinkedList<Integer> adj(int v)
     {
         return adj[v];
     }

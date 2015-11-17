@@ -19,9 +19,14 @@ public class ConnectedComponents
 
 	for(int v = 0; v < g.V(); v++)
 	{
-	    if(!marked[v])
+            // Call dfs if vertex has not been visitted and have atleast one component
+	    // in adjacency list
+	    if(!marked[v] && g.adj(v).size() > 0) 
 	    {
 	        dfs(g, v);
+		// All connections for the given vertex has been identified
+		// put component no as key and size of the component as value
+		// in a tree map
 		map.put(count, size);
 		count++;
 		size = 0;
@@ -33,13 +38,12 @@ public class ConnectedComponents
     {
         marked[v] = true;
 	id[v] = count;
+	size++;
 
 	for(int w : g.adj(v))
 	{
-	    if(size == 0) size = 1;
 	    if(!marked[w])
 	    {
-	        size++;
 		dfs(g, w);
 	    }
 	}
